@@ -1,0 +1,79 @@
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(../image/backgroundImage.jpg);
+    background-size: cover;
+    /*背景图基于容器大小伸缩*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /*固定，不随其余部分滚动*/
+    background-clip: border-box;
+    /*设置元素的背景延伸到边框下面*/
+    font-family: "microsoft yahei";
+    margin: 0;
+
+}
+
+.register {
+    position: absolute;
+    overflow: hidden;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    padding: 20px;
+    font-weight: 500;
+    background: rgb(248, 248, 255, 0.5);
+}
+
+input {
+    margin: 2%;
+    border: none;
+    height: 20px;
+    padding: 1%;
+    width: 50%;
+    border-radius: 7px;
+}
+
+input[type=radio] {
+    width: 18px;
+}
+
+#register-submit {
+    width: 20%;
+    height: 2rem;
+    line-height: 16px;
+    background-color: rgb(6, 135, 221);
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 16px;
+    letter-spacing: 10px;
+    border-radius: 10px;
+    /*使button中的文字对齐要设置行高line-height*/
+}
+
+#register-verify {
+    border: 1px solid rgb(6, 135, 221);
+    width: 15%;
+    height: 2rem;
+    border-radius: 10px;
+    color: rgb(6, 135, 221);
+    background-color: white;
+    font-size: 16px;
+    line-height: 16px;
+    display: inline-block;
+}
+
+.register-nicknameSpan,
+.register-telSpan,
+.register-verificationSpan,
+.register-pwdSpan,
+.register-confirmPwdSpan {
+    color: rgb(199, 119, 0);
+    font-size: 16px;
+}

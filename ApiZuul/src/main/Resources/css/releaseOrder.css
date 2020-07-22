@@ -1,0 +1,73 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-image: url(../image/backgroundImage.jpg);
+    background-size: cover;
+    /*背景图基于容器大小伸缩*/
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /*固定，不随其余部分滚动*/
+    background-clip: border-box;
+    /*设置元素的背景延伸到边框下面*/
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "microsoft yahei";
+    color: rgb(51, 53, 68);
+}
+
+.releaseOrder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.releaseOrder .releaseOrder-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 80%;
+    padding: 1.5em;
+    background: rgb(248, 248, 255, 0.5);
+}
+
+.releaseOrder .releaseOrder-content form {
+    font-size: 18px;
+}
+
+.releaseOrder .releaseOrder-content form input {
+    margin: 0.6rem 0;
+    width: 50%;
+    height: 1.9rem;
+    border-radius: 7px;
+    border: none;
+    padding: 2px 0 2px 7px;
+}
+
+.releaseOrder .releaseOrder-content form label{
+    letter-spacing: 2px;
+
+}
+
+.releaseOrder .releaseOrder-content input[name="Sex"] {
+    width: 5%;
+    height: 0.9rem;
+}
+
+.releaseOrder .releaseOrder-content input[type="submit"] {
+    width: 20%;
+    height: 2.3rem;
+    background-color: rgb(6, 135, 221);
+    color: white;
+    font-size: 16px;
+    letter-spacing: 7px;
+    float: right;
+}
+
+span{
+    color:rgb(199, 119, 0);
+}

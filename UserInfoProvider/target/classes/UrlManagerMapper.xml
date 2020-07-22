@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--对应一个接口的全限定名，myBatis上下文可以通过它找到对应的接口-->
+<mapper namespace="com.mapper.UrlManagerMapper">
+
+    <select id="selectUrl" resultType="com.pojo.Url">
+        select * from require_url
+    </select>
+
+    <insert id="addUrl" parameterType="com.pojo.Url">
+        insert into require_url values (#{id}, #{intercept_type}, #{url}, #{request_method})
+    </insert>
+
+    <update id="updateUrl" parameterType="com.pojo.Url">
+        update require_url set intercept_type = #{intercept_type}, url = #{url},request_method = #{request_method}
+    </update>
+
+    <delete id="deleteUrl" parameterType="int" >
+        delete from require_url where id = #{id}
+    </delete>
+
+</mapper>

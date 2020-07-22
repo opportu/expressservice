@@ -1,0 +1,237 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #CADBE9;
+    background-attachment: fixed;
+    background-clip: border-box;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "microsoft yahei";
+}
+
+.index {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    min-width: 1200px;
+}
+
+.index .index-functionModule {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    height: 50px;
+    width: 100%;
+    position: relative;
+    background-color:#6AAFE6;
+}
+
+
+.index .index-functionModule-content {
+    position: relative;
+    float: right;
+    right: 20px;
+    top: 50%;
+    transform: translate(0, -50%);
+    color:black;
+}
+
+.index .index-functionModule .index-functionModule-content span {
+    margin: 23px;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.index .index-functionModule .index-functionModule-content span:hover{
+    color: white;
+}
+
+#nicknameSpan {
+    cursor: pointer;
+}
+
+.index .index-orderFormModule {
+    height: 670px;
+    margin-top: 20px;
+    width: 100%;
+    margin-bottom:46px;
+}
+
+.clearfix::after,
+.clearfix::before {
+    content: " ";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.index .index-orderFormModule .index-orderFormModule-content {
+    width: 100%;
+}
+.index-orderFormModule-content .hidden {
+    display: none;
+    text-align: left;
+    font-size: 15px;
+}
+
+.index-orderFormModule-content .tb-unfoldTD {
+    cursor: pointer;
+    color:black;
+    text-decoration: underline;
+}
+
+.hidden .hidden-title{
+    text-decoration: underline;
+}
+
+.hidden .hidden-info{
+    margin-right: 20px;
+}
+
+#tb,
+#tb tr th,
+#tb tr td {
+    border: 1px solid rgb(229, 229, 229);
+}
+
+#tb tr th {
+    height: 45px;
+}
+
+#tb tr td {
+    height: 28px;
+}
+
+#tb {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-color: rgb(255, 255, 255);
+    width: 1080px;
+    text-align: center;
+    border-collapse: collapse;
+    border: 2px solid rgb(229, 229, 229);
+}
+
+#tb tr td button{
+    border-style:groove;
+    background-color: #F68657;
+    color: white;
+}
+
+#tb .tb-sequence{
+    width: 70px;
+}
+#tb .tb-goodSize{
+    width: 167px;
+}
+#tb .tb-sex{
+    width: 130px;
+}
+#tb .tb-wage{
+    width: 100px;
+}
+#tb .tb-deadline{
+    width: 285px;
+}
+#tb .tb-status{
+    width: 102px;
+}
+#tb .tb-more,
+#tb .tb-unfoldTD{
+    width: 80px;
+}
+#tb .tb-getBtn{
+    width: 136px;
+}
+
+
+
+.index .index-paginationModule {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.index .index-paginationModule .index-paginationModule-content {
+    height: 50px;
+    background:#6AAFE6;
+}
+
+ul {
+    list-style-type: none;
+    position: absolute;
+    height: 20px;
+    left: 50%;
+    top: -5px;
+    transform: translate(-50%, 0);
+
+}
+
+li {
+    float: left;
+    margin: 0 5px;
+}
+
+#firstPageBtn,
+#prePageBtn,
+#nextPageBtn,
+#lastPageBtn {
+    padding: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid black;
+    background-color: white;
+}
+
+#firstPageBtn:hover,
+#prePageBtn:hover,
+#nextPageBtn:hover,
+#lastPageBtn:hover {
+    background-color: #9eb0c6;
+}
+
+#firstPageBtn,
+#lastPageBtn {
+    width: 55px;
+}
+
+.index-userInfo {
+    position: absolute;
+    right: 0;
+    width: 300px;
+    height: 400px;
+    border-bottom: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+    border-left: 1px solid #f0f0f0;
+    box-shadow: 2px 2px 3px #9eb0c6;
+    z-index: 999;
+    background-color: #fffff5;
+    display: none;
+}
+
+.index-userInfo p{
+    margin-left: 10px;
+}
+
+#index-userInfo-logoutBtn{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    background-color: #fffff5;
+    border: none;
+    text-decoration: underline;
+    letter-spacing: 2px;
+    font-size: 16px;
+    cursor: pointer;
+}
+

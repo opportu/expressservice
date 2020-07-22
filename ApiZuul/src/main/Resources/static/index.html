@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html" charset="utf-8">
+    <title>快递帮——主页</title>
+    <link rel="icon" href="../image/icon.ico" type="image/x-icon" />
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../common/url.js"></script>
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="index">
+        <div class="index-functionModule">
+            <div class="index-functionModule-content">
+                <span onclick="enterMyPlacedOrder()">我的发单</span>
+                <span onclick="">我的接单</span>
+                <span id="nicknameSpan" onclick="showUser()">登录</span>
+            </div>
+        </div>
+
+        <div class="index-userInfo">
+            <p>用户昵称：<span id="index-userInfo-nickname"></span></p>
+            <p>账号：<span id="index-userInfo-tel"></span></p>
+            <p>性别：<span id="index-userInfo-sex"></span></p>
+            <p>发单总数:<span id="index-userInfo-releaseOrderCount"></span></p>
+            <button id="index-userInfo-logoutBtn" onclick="logoutFunc()">注销</button>
+        </div>
+
+        <div class="index-orderFormModule  clearfix">
+            <div class="index-orderFormModule-content">
+                <!-- <table id="tb">
+                    <tr>
+                        <th class="tb-sequence">序号</th>
+                        <th class="tb-goodSize">商品规格</th>
+                        <th class="tb-sex">性别要求</th>
+                        <th class="tb-wage">金额</th>
+                        <th class="tb-deadline">配送截止时间</th>
+                        <th class="tb-more">详情</th>
+                        <th class="tb-getBtn">点击领取</th>
+                    </tr>
+                    <tr>
+                        <td class="tb-sequence">0</td>
+                        <td class="tb-goodSize">衣服，小件</td>
+                        <td class="tb-sex">不限</td>
+                        <td class="tb-wage">2元</td>
+                        <td class="tb-deadline">2019/12/4 19：50</td>
+                        <td class="tb-unfoldTD" onclick="getMore(10001,this)">展开</td>
+                        <td class="tb-getBtn"><button style="border-style:groove" onclick="changeStatus(123,this)">领取</button></td>
+                    </tr>
+                    <tr class="hidden" id="10001">
+                        <td colspan="7">
+                            <div><span class="hidden-title">联系方式</span>:<span class="hidden-info">122222212112</span>
+                                <span class="hidden-title">取货地点</span>:<span class="hidden-info">西安电子科技大学长安校区综合楼2楼韵达快递</span>
+                                <span class="hidden-title">送货地点</span>:<span class="hidden-info">西安电子科技大学长安校区2号公寓楼2楼101室</span>
+                                <span class="hidden-title">备注</span>:<span class="hidden-info">取货码200001</span></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>鞋子，大件</td>
+                        <td>男</td>
+                        <td>2元</td>
+                        <td>2019/12/6 19：50</td>
+                        <td class="tb-unfoldTD" onclick="getMore(10002,this)">展开</td>
+                        <td><button onclick="">领取</button></td>
+                    </tr>
+                    <tr class="hidden" id="10002">
+                        <td colspan="2">联系方式：122222212112</td>
+                        <td colspan="2">取货地点：西安电子科技大学长安校区综合楼2楼韵达快递</td>
+                        <td colspan="2">送货地点：西安电子科技大学长安校区2号公寓楼2楼101室</td>
+                        <td colspan="2">备注：取货吗200001</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>鞋子，大件</td>
+                        <td>男</td>
+                        <td>2元</td>
+                        <td>2019/12/6 19：50</td>
+                        <td class="tb-unfoldTD" onclick="getMore(10003,this)">展开</td>
+                        <td><button onclick="">领取</button></td>
+                    </tr>
+                    <tr class="hidden" id="10003">
+                        <td colspan="2">联系方式：122222212112</td>
+                        <td colspan="2">取货地点：西安电子科技大学长安校区综合楼2楼韵达快递</td>
+                        <td colspan="2">送货地点：西安电子科技大学长安校区2号公寓楼2楼101室</td>
+                        <td colspan="2">备注：取货吗200001</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>鞋子，大件</td>
+                        <td>男</td>
+                        <td>2元</td>
+                        <td>2019/12/6 19：50</td>
+                        <td class="tb-unfoldTD" onclick="getMore(10004,this)">展开</td>
+                        <td><button onclick="">领取</button></td>
+                    </tr>
+                    <tr class="hidden" id="10004">
+                        <td colspan="2">联系方式：122222212112</td>
+                        <td colspan="2">取货地点：西安电子科技大学长安校区综合楼2楼韵达快递</td>
+                        <td colspan="2">送货地点：西安电子科技大学长安校区2号公寓楼2楼101室</td>
+                        <td colspan="2">备注：取货吗200001</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>鞋子，大件</td>
+                        <td>男</td>
+                        <td>2元</td>
+                        <td>2019/12/6 19：50</td>
+                        <td class="tb-unfoldTD" onclick="getMore(10005,this)">展开</td>
+                        <td><button onclick="">领取</button></td>
+                    </tr>
+                    <tr class="hidden" id="10005">
+                        <td colspan="2">联系方式：122222212112</td>
+                        <td colspan="2">取货地点：西安电子科技大学长安校区综合楼2楼韵达快递</td>
+                        <td colspan="2">送货地点：西安电子科技大学长安校区2号公寓楼2楼101室</td>
+                        <td colspan="2">备注：取货吗200001</td>
+                    </tr>
+                </table> -->
+            </div>
+        </div>
+        <div class="index-paginationModule">
+            <div class="index-paginationModule-content">
+                <ul>
+                    <li><button id="firstPageBtn" onclick="changePage(1)">首页</button></li>
+                    <li><button id="prePageBtn" onclick="changePage(currentPage-1)">
+                            <<</button> </li> <li><button id="nextPageBtn"
+                                    onclick="changePage(currentPage+1)">>></button></li>
+                    <li><button id="lastPageBtn" onclick="changePage(countPage)">尾页</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script language="javascript" src="../js/index.js"></script>
+    <script language="javascript" src="../common/userInfo.js"></script>
+</body>
+
+</html>

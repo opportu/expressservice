@@ -1,0 +1,7 @@
+com\mapper\CommentMapper.class
+com\basic\CommentStatus.class
+com\controller\CommentController.class
+com\service\impl\CommentServiceImpl.class
+com\CommentServiceApplication.class
+com\service\CommentService.class
+com\pojo\Comment.class

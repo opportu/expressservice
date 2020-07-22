@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html" charset="utf-8">
+    <title>快递帮——发布订单</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../common/url.js"></script>
+    <link href="../css/releaseOrder.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="releaseOrder">
+        <div class="releaseOrder-content">
+            <form onsubmit="checkSubmit()">
+                <label for="releaseOrder-telephone">手机号：</label><input type="text" id="releaseOrder-telephone"
+                    maxlength="11"  placeholder="必填" onblur="checkTel()" />
+                <span class="releaseOrder-telSpan"></span>
+                <br />
+                <label for="releaseOrder-shipAddress">取货地点：</label><input type="text" id="releaseOrder-shipAddress"
+                    placeholder="必填" onblur="checkShipAdd()" />
+                <span class="releaseOrder-shipAddSpan"></span>
+                <br />
+                <label for="releaseOrder-sendAddress">送货地点：</label><input type="text" id="releaseOrder-sendAddress"
+                    placeholder="必填" onblur="checkSendAdd()" />
+                <span class="releaseOrder-sendAddSpan"></span>
+                <br />
+                <label for="releaseOrder-goodSize">物品大小：</label><input type="text" id="releaseOrder-goodSize"
+                    placeholder="必填" onblur="checkGoodSize()" />
+                <span class="releaseOrder-goodSizeSpan"></span>
+                <br />
+                <label for="releaseOrder-wage">报酬：</label><input type="number" id="releaseOrder-wage"
+                    placeholder="填入数字，可以包含小数点" onblur="checkWage()" />
+                <span class="releaseOrder-wageSpan"></span>
+                <br />
+                <label for="releaseOrder-sex">性别要求：</label>
+                <input type="radio" name="Sex" value="male" checked />男
+                <input type="radio" name="Sex" value="female" />女
+                <input type="radio" name="Sex" value="0" />不限
+                <span class="releaseOrder-sexSpan"></span>
+                <br />
+                <label for="releaseOrder-note">备注：</label><input type="text" id="releaseOrder-note" placeholder="选填" />
+                <br />
+                <label for="releaseOrder-datetime">截止时间：</label><input type="datetime-local" id="releaseOrder-datetime"
+                    onblur="checkdateTime()" />
+                <span class="releaseOrder-dtSpan"></span>
+                <br />
+                <input id="releaseOrder-submit" type="submit" value="发布" />
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="../js/releaseOrder.js"></script>
+</body>
+
+</html>
