@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ApiZuul/ApiZuul.iml" filepath="$PROJECT_DIR$/ApiZuul/ApiZuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CommentInfoProvider/CommentInfoProvider.iml" filepath="$PROJECT_DIR$/CommentInfoProvider/CommentInfoProvider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OrderInfoProvider/OrderInfoProvider.iml" filepath="$PROJECT_DIR$/OrderInfoProvider/OrderInfoProvider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UserInfoProvider/UserInfoProvider.iml" filepath="$PROJECT_DIR$/UserInfoProvider/UserInfoProvider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WeChatAppProvider/WeChatAppProvider.iml" filepath="$PROJECT_DIR$/WeChatAppProvider/WeChatAppProvider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config/config.iml" filepath="$PROJECT_DIR$/config/config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka/eureka.iml" filepath="$PROJECT_DIR$/eureka/eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/expressservice.iml" filepath="$PROJECT_DIR$/.idea/expressservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/feedbackInfoProvider/feedbackInfoProvider.iml" filepath="$PROJECT_DIR$/feedbackInfoProvider/feedbackInfoProvider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/redistemplate/redistemplate.iml" filepath="$PROJECT_DIR$/redistemplate/redistemplate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ribbon/ribbon.iml" filepath="$PROJECT_DIR$/ribbon/ribbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/security/security.iml" filepath="$PROJECT_DIR$/security/security.iml" />
+    </modules>
+  </component>
+</project>

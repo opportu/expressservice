@@ -27,7 +27,8 @@
     <module>OrderInfoProvider</module><!--port = 8802-->
     <module>CommentInfoProvider</module><!--port = 8803-->
     <module>feedbackInfoProvider</module>
-    <module>WeChatAppProvider</module><!--port = 8804-->
+    <module>WeChatAppProvider</module>
+    <module>redistemplate</module><!--port = 8804-->
   </modules>
   <packaging>pom</packaging>
 
