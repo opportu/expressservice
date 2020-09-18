@@ -6,9 +6,11 @@ package com.mapper;
 
 import com.pojo.User;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Service;
 
 
 @Mapper
+@Service
 public interface UserMapper {
 
     /**

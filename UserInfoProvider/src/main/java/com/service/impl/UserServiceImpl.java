@@ -23,6 +23,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private RedisCacheServiceImpl redisCacheService;
+
     /**
      * 用户注册业务方法实现
      *
@@ -39,6 +42,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(String.valueOf(paramMap.get("password")));
         user.setSex(Boolean.parseBoolean(String.valueOf(paramMap.get("sex"))));
 //        user.setCreate_time(TimeStampUtil.getTimeStamp());
+        redisCacheService.saveObject(user.getName(), user);
         User user1 = userMapper.getUserByTel(user.getTelephone());
         if (user1 == null) {
             userMapper.addUser(user);
