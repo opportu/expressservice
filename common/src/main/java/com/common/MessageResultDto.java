@@ -17,6 +17,7 @@ public class MessageResultDto {
     String code;
 
 
+
     /**
      * 状态码的描述。
      */
@@ -27,5 +28,16 @@ public class MessageResultDto {
      * 请求ID。
      */
     String requiredId;
+
+    @Override
+    public String toString() {
+        return "MessageResultDto{" +
+                "bizId='" + bizId + '\'' +
+                ", code='" + code + '\'' +
+                ", message='" + message + '\'' +
+                ", requiredId='" + requiredId + '\'' +
+                '}';
+    }
+
 
 }

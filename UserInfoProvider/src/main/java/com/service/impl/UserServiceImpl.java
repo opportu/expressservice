@@ -7,8 +7,10 @@ import com.service.UserService;
 import com.utils.ImageUtil;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,8 +26,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Autowired
-    private RedisCacheServiceImpl redisCacheService;
-
+    private RedisTemplate<String, Serializable> redisCacheTemplate;
     /**
      * 用户注册业务方法实现
      *
@@ -42,7 +43,9 @@ public class UserServiceImpl implements UserService {
         user.setPassword(String.valueOf(paramMap.get("password")));
         user.setSex(Boolean.parseBoolean(String.valueOf(paramMap.get("sex"))));
 //        user.setCreate_time(TimeStampUtil.getTimeStamp());
-        redisCacheService.saveObject(user.getName(), user);
+        redisCacheTemplate.opsForValue().set("user", user);
+        User user2 = (User) redisCacheTemplate.opsForValue().get("user");
+        System.out.println(user2.toString());
         User user1 = userMapper.getUserByTel(user.getTelephone());
         if (user1 == null) {
             userMapper.addUser(user);
@@ -230,7 +233,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User loginUserWithPwd(HashMap<String, Object> paramMap) throws Exception {
-        User user  = new User();
+        User user = new User();
         user.setTelephone(String.valueOf(paramMap.get("telephone")));
         user.setPassword((String.valueOf(paramMap.get("password"))));
         User isLoginUser = userMapper.getUserByTel(String.valueOf(paramMap.get("telephone")));

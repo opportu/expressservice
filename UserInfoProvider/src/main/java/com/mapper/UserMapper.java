@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 
 @Mapper
-@Service
 public interface UserMapper {
 
     /**

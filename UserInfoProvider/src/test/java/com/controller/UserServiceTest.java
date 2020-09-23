@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.service.UserService;
+import com.service.impl.UserServiceImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class UserServiceTest {
 
     @Autowired
-    UserService userService;
+    private UserServiceImpl userService;
 
     @Test
     public void testAddUser(){

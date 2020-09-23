@@ -1,3 +1,4 @@
+/*
 package com.service.impl;
 
 import com.service.RedisCacheService;
@@ -21,8 +22,6 @@ public class RedisCacheServiceImpl implements RedisCacheService {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @Autowired
-    private RedisTemplate<String, Object> initRedisTemplate;
 
     private Map<Class, RedisSerializer> serializerMap = new ConcurrentHashMap<Class, RedisSerializer>();
     @Override
@@ -230,3 +229,4 @@ public class RedisCacheServiceImpl implements RedisCacheService {
         return initRedisTemplate.opsForValue().increment(key, 1).intValue();
     }
 }
+*/

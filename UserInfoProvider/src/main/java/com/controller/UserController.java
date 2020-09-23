@@ -10,6 +10,7 @@ import com.pojo.User;
 import com.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,9 +30,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Value("${server.port}")
+    private int port;
+
     @RequestMapping(value = "/hello1", method = RequestMethod.GET)
     public String hello1(@RequestParam("hello") String hello) {
         try {
+            System.out.println(port);
             System.out.println("hello ==" + hello);
             HashMap<String, Object> map = new HashMap<String, Object>();
             map.put("userID", 1);
