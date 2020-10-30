@@ -19,3 +19,8 @@ eureka:
 spring:
   application:
     name: security
+
+#关闭security初始化拦截
+security:
+  basic:
+    enabled: false
