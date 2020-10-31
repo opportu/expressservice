@@ -3,6 +3,7 @@ server:
   #端口
   port: 8705
 
+
 # 指定当前eureka客户端的注册地址，也就是eureka服务的提供方，当前配置的服务的注册服务方
 eureka:
   client:
@@ -24,3 +25,5 @@ spring:
 security:
   basic:
     enabled: false
+logging:
+  level: debug

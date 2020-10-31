@@ -11,6 +11,8 @@ import java.util.Date;
 @Data
 public class LoginUserInfo {
 
+    private long id;
+
     private String userCode;
 
     private String password;

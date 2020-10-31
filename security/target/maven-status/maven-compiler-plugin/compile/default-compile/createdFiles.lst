@@ -1,1 +1,8 @@
+com\mapper\LoginUserMapper.class
+META-INF\spring-configuration-metadata.json
+com\config\mybatis\DataSourceProperties.class
+com\domain\AuthUserInfo.class
 com\SecurityApplication.class
+com\domain\LoginUserInfo.class
+com\config\mybatis\MybatisConfiguration.class
+com\mapper\UserAuthTokenMapper.class

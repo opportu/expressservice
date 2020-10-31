@@ -21,6 +21,11 @@ public class MybatisConfiguration {
     private DataSourceProperties dataSourceProperties;
 
 
+    /**
+     * 加载数据源
+     * @return
+     * @throws SQLException
+     */
     @Bean
     public DataSource getDataSource() throws SQLException {
         DruidDataSource druidDataSource = new DruidDataSource();
@@ -29,23 +34,32 @@ public class MybatisConfiguration {
         druidDataSource.setUsername(dataSourceProperties.getUsername());
         druidDataSource.setPassword(dataSourceProperties.getPassword());
         druidDataSource.setInitialSize(dataSourceProperties.getInitialSize());
+        druidDataSource.setMinIdle(dataSourceProperties.getMinIdle());
+        druidDataSource.setMaxActive(dataSourceProperties.getMaxActive());
+        druidDataSource.setMaxWait(dataSourceProperties.getMaxWait());
+        druidDataSource.setDbType(dataSourceProperties.getDbType());
         return druidDataSource;
     }
 
-
+    /**
+     * 注入事务管理者
+     * @return
+     * @throws SQLException
+     */
     @Bean
     public DataSourceTransactionManager transactionManager() throws SQLException {
         return new DataSourceTransactionManager(getDataSource());
     }
 
+    /**
+     * 配置SqlSession工厂
+     * @return
+     * @throws Exception
+     */
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
         sessionFactoryBean.setDataSource(getDataSource());
-        //
-        sessionFactoryBean.setTypeHandlersPackage("com.config.mybatis.typehandler");
-        //打包问题
-        //sessionFactoryBean.setVfs(SpringBootVFS.class);
         return sessionFactoryBean.getObject();
     }
 

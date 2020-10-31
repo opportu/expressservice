@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.UserAuthTokenMapper">
+
+
+    <insert id="insertToken">
+        insert into user_auth_token(platform_key, user_code, token, created_at, expire_time, last_access_time, access_remark, refresh_token)
+        values (#{platformKey}, #{userCode}, #{token})
+    </insert>
+    <update id="updateRefreshToken">
+        update user_auth_token set
+        refresh_token = {refreshToken},
+        created_at = now()
+        where platform_key = #{platformKey} and user_code = #{userCode}
+    </update>
+    <select id="selectRefreshTokenByUserCode" resultType="java.lang.String">
+        select refresh_token from user_auth_token
+        where user_code = #{userCode}
+        and platform_key = #{platformKey}
+    </select>
+
+    <update id="cleanRefreshToken">
+        update user_auth_token set refresh_token = null
+        where user_code = #{userCode}
+    </update>
+</mapper>
