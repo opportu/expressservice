@@ -62,7 +62,7 @@ public class SessionHandler {
             System.out.println("进来了1");
             //session判断用户登录状态
             HttpSession session = request.getSession();
-            User user = (User) session.getAttribute(CommonParams.SESSION_KEY);
+            User user = (User) session.getAttribute(CommonParams.SESSION_KEY.getDescription());
 
             //如果用户在登陆状态下想要退出，前端请求发送到这里，将session设置为invalidate
             if(user != null && uri.contains("/userInfo/exitLogin")){
@@ -111,7 +111,7 @@ public class SessionHandler {
      */
     public static void save(User user, HttpSession session) {
         //session保存用户登录状态
-        session.setAttribute(CommonParams.SESSION_KEY, user);
+        session.setAttribute(CommonParams.SESSION_KEY.getDescription(), user);
         //登录过期时间为1小时
         session.setMaxInactiveInterval(60 * 60);
     }

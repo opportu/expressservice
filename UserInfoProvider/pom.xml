@@ -67,6 +67,11 @@
             <artifactId>redistemplate</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.10</version>
+        </dependency>
 
         <!--导入公共包common-->
         <dependency>
