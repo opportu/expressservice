@@ -37,6 +37,15 @@ public interface RedisCacheService {
      */
     void saveValue(String key, Object value);
 
+
+    /**
+     * 保存键值对（有过期时间）
+     * @param key key
+     * @param obj object
+     * @param expireTime expireTime
+     * @param timeUnit timeUnit 时间单位
+     * @param <T> 返回泛型
+     */
     <T> void saveObjectWithExpireTime(final String key, final T obj, final long expireTime, TimeUnit timeUnit);
 
     <T> void saveObject(String key, T obj);

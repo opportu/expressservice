@@ -7,6 +7,7 @@ import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
 
@@ -56,8 +57,17 @@ public class RedisConfig {
 
 
     @Bean
-    public RedisTemplate<String, Serializable> redisCacheTemplate(JedisConnectionFactory factory) {
-        RedisTemplate<String, Serializable> template = new RedisTemplate<String, Serializable>();
+    public RedisTemplate<String, Integer> redisCacheTemplate(JedisConnectionFactory factory) {
+        RedisTemplate<String, Integer> template = new RedisTemplate<>();
+        template.setConnectionFactory(factory);
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new Jackson2JsonRedisSerializer<>(Integer.class));
+        return template;
+    }
+
+    @Bean
+    public RedisTemplate<String, Object> redisCacheTemplate2Object(JedisConnectionFactory factory) {
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(factory);
         template.setKeySerializer(new StringRedisSerializer());
         template.setValueSerializer(new GenericJackson2JsonRedisSerializer());

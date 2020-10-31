@@ -1,4 +1,3 @@
-/*
 package com.service.impl;
 
 import com.service.RedisCacheService;
@@ -22,8 +21,14 @@ public class RedisCacheServiceImpl implements RedisCacheService {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    @Autowired
+    private RedisTemplate<String, Integer> redisCacheTemplate;
 
-    private Map<Class, RedisSerializer> serializerMap = new ConcurrentHashMap<Class, RedisSerializer>();
+    @Autowired
+    private RedisTemplate<String, Object> redisCacheTemplate2Object;
+
+
+    private Map<Class, RedisSerializer> serializerMap = new ConcurrentHashMap<>();
     @Override
     public RedisSerializer getSerializer(Class clazz) {
         RedisSerializer serializer = serializerMap.get(clazz);
@@ -53,7 +58,7 @@ public class RedisCacheServiceImpl implements RedisCacheService {
 
     @Override
     public void saveValue(String key, Object value) {
-        ValueOperations<String, Object> valueOperations = initRedisTemplate.opsForValue();
+        ValueOperations<String, Object> valueOperations = redisCacheTemplate2Object.opsForValue();
         valueOperations.set(key, value);
     }
 
@@ -216,17 +221,16 @@ public class RedisCacheServiceImpl implements RedisCacheService {
 
     @Override
     public void saveInteger(String key, int value) {
-        initRedisTemplate.opsForValue().set(key, value);
+        redisCacheTemplate.opsForValue().set(key, value);
     }
 
     @Override
     public Object getInteger(String key) {
-        return initRedisTemplate.opsForValue().get(key);
+        return redisCacheTemplate.opsForValue().get(key);
     }
 
     @Override
     public Integer incrementAndGet(String key) {
-        return initRedisTemplate.opsForValue().increment(key, 1).intValue();
+        return redisCacheTemplate.opsForValue().increment(key, 1).intValue();
     }
 }
-*/
