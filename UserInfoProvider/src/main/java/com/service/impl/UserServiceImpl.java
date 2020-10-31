@@ -1,16 +1,20 @@
 package com.service.impl;
 
 import com.basic.UserCommonStatus;
+import com.common.CommonParams;
+import com.common.ErrorCode;
+import com.exception.ServiceException;
 import com.mapper.UserMapper;
 import com.pojo.User;
+import com.service.RedisCacheService;
 import com.service.UserService;
 import com.utils.ImageUtil;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,13 +24,14 @@ public class UserServiceImpl implements UserService {
     /**
      * 日志管理工具
      */
-    protected static Logger logger = Logger.getLogger(UserServiceImpl.class);
+    protected static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserMapper userMapper;
 
     @Autowired
-    private RedisTemplate<String, Serializable> redisCacheTemplate;
+    private RedisCacheService redisCacheService;
+
     /**
      * 用户注册业务方法实现
      *
@@ -36,34 +41,38 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public int addUser(HashMap<String, Object> paramMap) throws Exception {
-        int flag = 0;
         User user = new User();
         user.setNickname(String.valueOf(paramMap.get("nickname")));
         user.setTelephone(String.valueOf(paramMap.get("telephone")));
         user.setPassword(String.valueOf(paramMap.get("password")));
         user.setSex(Boolean.parseBoolean(String.valueOf(paramMap.get("sex"))));
-//        user.setCreate_time(TimeStampUtil.getTimeStamp());
-        redisCacheTemplate.opsForValue().set("user", user);
-        User user2 = (User) redisCacheTemplate.opsForValue().get("user");
-        System.out.println(user2.toString());
-        User user1 = userMapper.getUserByTel(user.getTelephone());
-        if (user1 == null) {
-            userMapper.addUser(user);
-            logger.info("[用户注册] => 成功！");
-            flag = 200;//表示用户在后端注册成功
-        } else {
-            if (user.getTelephone().equals(user.getTelephone())) {
-//                logger.error("[用户注册] => 失败！");
-                flag = 404;//表示手机号已经被注册
-
-            } else {
-                userMapper.addUser(user);
-                logger.info("[用户注册] => 成功1！");
-                flag = 200;//表示用户在后端注册成功
-
-            }
+        long currentTime = System.currentTimeMillis();
+        try {
+            redisCacheService.saveObject("user", user);
+        } catch (Exception e) {
+            logger.error("【数据存入缓存中失败】,the exception => {}", e);
         }
-        return flag;
+        logger.debug("【保存数据到缓存中花费时间】：{}", System.currentTimeMillis() - currentTime);
+        return checkUserLoginStatus(user);
+    }
+
+    private int checkUserLoginStatus(User user) {
+        try {
+            User userInfo = userMapper.getUserByTel(user.getTelephone());
+            if (StringUtils.isEmpty(userInfo)) {
+                logger.warn("【数据库中用户信息不存在】=> {}", userInfo);
+                logger.info("【用户注册开始】");
+                userMapper.addUser(user);
+                logger.info("【用户注册结束】");
+                return CommonParams.SUCCESS.getCode();
+            } else {
+                logger.error("【用户手机号码已被注册】");
+                return ErrorCode.MOBILE_PHONE_USED_BY_OTHERS.getErrorCode();
+            }
+        } catch (Exception e) {
+            logger.error("【用户注册失败】=> {}", e);
+            throw new ServiceException(ErrorCode.DATABASE_ERROR);
+        }
     }
 
     /**
@@ -83,7 +92,7 @@ public class UserServiceImpl implements UserService {
                 return isLoginUser;
             }
         }
-        return new User();
+        return null;
     }
 
     /**
@@ -171,11 +180,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User viewIfFullUserInformation(HashMap<String, Object> paramMap) throws Exception {
         User user = userMapper.getUserByUserID(Long.parseLong(String.valueOf(paramMap.get("userID"))));
-        if (user != null) {
-            return user;
-        } else {
-            logger.error("[用户信息不完善]");
+        if (StringUtils.isEmpty(user)) {
+            logger.error("【用户信息不完善】");
             return null;
+        } else {
+            return user;
         }
     }
 
@@ -191,7 +200,7 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.getUserByTel(String.valueOf(paramMap.get("telephone")));
         user.setPassword(String.valueOf(paramMap.get("password")));
         userMapper.changeUserInfo(user);
-        return UserCommonStatus.getCodeByName("SUCCESS");
+        return CommonParams.SUCCESS.getCode();
     }
 
     /**
@@ -237,14 +246,14 @@ public class UserServiceImpl implements UserService {
         user.setTelephone(String.valueOf(paramMap.get("telephone")));
         user.setPassword((String.valueOf(paramMap.get("password"))));
         User isLoginUser = userMapper.getUserByTel(String.valueOf(paramMap.get("telephone")));
-        if (isLoginUser != null) {
-            if (isLoginUser.getPassword().equals(String.valueOf(paramMap.get("password")))) {
-                return isLoginUser;
-            } else {
-                return user;
-            }
-        } else {
+        if (StringUtils.isEmpty(isLoginUser)) {
+            logger.error("【用户信息不存在】");
             return null;
+        } else {
+            if (isLoginUser.getPassword().equals(user.getPassword())) {
+                return isLoginUser;
+            }
         }
+        return null;
     }
 }
