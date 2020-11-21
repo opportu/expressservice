@@ -8,14 +8,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="CommentInfoProvider" />
-        <module name="security" />
+        <module name="messagebus" />
         <module name="OrderInfoProvider" />
-        <module name="common" />
         <module name="eureka" />
         <module name="ribbon" />
         <module name="redistemplate" />
-        <module name="UserInfoProvider" />
         <module name="ApiZuul" />
+        <module name="security" />
+        <module name="common" />
+        <module name="UserInfoProvider" />
         <module name="config" />
         <module name="feedbackInfoProvider" />
         <module name="WeChatAppProvider" />
@@ -29,6 +30,7 @@
       <module name="eureka" target="1.6" />
       <module name="expressservice" target="1.7" />
       <module name="feedbackInfoProvider" target="1.6" />
+      <module name="messagebus" target="1.6" />
       <module name="OrderInfoProvider" target="1.6" />
       <module name="redistemplate" target="8" />
       <module name="ribbon" target="1.6" />

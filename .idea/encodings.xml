@@ -20,6 +20,7 @@
     <file url="file://$PROJECT_DIR$/eureka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/feedbackInfoProvider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/feedbackInfoProvider/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/messagebus/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/redistemplate" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/redistemplate/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ribbon" charset="UTF-8" />

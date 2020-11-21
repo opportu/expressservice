@@ -28,7 +28,8 @@
     <module>CommentInfoProvider</module><!--port = 8803-->
     <module>feedbackInfoProvider</module>
     <module>WeChatAppProvider</module>
-    <module>redistemplate</module><!--port = 8804-->
+    <module>redistemplate</module>
+    <module>messagebus</module><!--port = 8804-->
   </modules>
   <packaging>pom</packaging>
 
@@ -60,7 +61,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
 
