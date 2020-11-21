@@ -1,0 +1,61 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.config.mybatis.DataSourceProperties",
+      "name": "datasource",
+      "type": "com.config.mybatis.DataSourceProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.config.mybatis.DataSourceProperties",
+      "name": "datasource.db-type",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.config.mybatis.DataSourceProperties",
+      "name": "datasource.drive-class-name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.config.mybatis.DataSourceProperties",
+      "defaultValue": 0,
+      "name": "datasource.initial-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.config.mybatis.DataSourceProperties",
+      "defaultValue": 0,
+      "name": "datasource.max-active",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.config.mybatis.DataSourceProperties",
+      "defaultValue": 0,
+      "name": "datasource.max-wait",
+      "type": "java.lang.Long"
+    },
+    {
+      "sourceType": "com.config.mybatis.DataSourceProperties",
+      "defaultValue": 0,
+      "name": "datasource.min-idle",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.config.mybatis.DataSourceProperties",
+      "name": "datasource.password",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.config.mybatis.DataSourceProperties",
+      "name": "datasource.url",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.config.mybatis.DataSourceProperties",
+      "name": "datasource.username",
+      "type": "java.lang.String"
+    }
+  ]
+}

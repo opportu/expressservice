@@ -3,6 +3,7 @@ package com.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 import java.io.Serializable;
 
 @Component
+@PropertySource("application-redis.properties")
 public class RedisConfig {
 
     @Value(value = "${spring.redis.host}")

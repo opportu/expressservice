@@ -30,9 +30,9 @@
       <module name="expressservice" target="1.7" />
       <module name="feedbackInfoProvider" target="1.6" />
       <module name="OrderInfoProvider" target="1.6" />
-      <module name="redistemplate" target="1.6" />
+      <module name="redistemplate" target="8" />
       <module name="ribbon" target="1.6" />
-      <module name="security" target="1.6" />
+      <module name="security" target="8" />
       <module name="UserInfoProvider" target="1.6" />
       <module name="WeChatAppProvider" target="1.6" />
     </bytecodeTargetLevel>

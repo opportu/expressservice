@@ -7,6 +7,7 @@ com\controller\UserController.class
 com\basic\UserCommonStatus.class
 com\service\UserService.class
 com\basic\SqlSessionSupport.class
+com\exception\ServiceException.class
 com\UserServiceApplication.class
 com\interceptor\LoginInterceptor.class
 com\utils\ImageUtil.class

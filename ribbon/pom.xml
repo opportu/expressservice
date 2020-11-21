@@ -42,6 +42,11 @@
             <artifactId>spring-cloud-starter-feign</artifactId>
             <version>1.4.4.RELEASE</version>
         </dependency>
+        <!--导入hystrix-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix</artifactId>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
         <dependency>

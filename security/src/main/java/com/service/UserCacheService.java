@@ -20,5 +20,7 @@ public interface UserCacheService {
 
     void updateActiveStatus(String userCode, boolean active, String updateBy);
 
+    void activateAndSetPassword(String userCode, String password, String updateBy);
+
 
 }

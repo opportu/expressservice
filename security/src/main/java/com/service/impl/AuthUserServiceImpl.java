@@ -4,17 +4,17 @@ import com.common.ErrorCode;
 import com.domain.LoginUserInfo;
 import com.domain.PasswordModifyRecord;
 import com.exception.ServiceException;
-import com.mapper.LoginUserMapper;
 import com.service.AuthUserService;
 import com.service.PasswordModifyRecordService;
-import com.service.RedisCacheService;
+import com.service.PasswordService;
 import com.service.UserCacheService;
 import org.apache.commons.lang.StringUtils;
-import org.apache.shiro.authc.credential.PasswordService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AuthUserServiceImpl implements AuthUserService {
 
 
@@ -23,8 +23,6 @@ public class AuthUserServiceImpl implements AuthUserService {
     @Autowired
     private PasswordService passwordService;
     @Autowired
-    private LoginUserMapper loginUserMapper;
-    @Autowired
     private UserCacheService userCacheService;
     @Autowired
     private PasswordModifyRecordService passwordModifyRecordService;
@@ -32,32 +30,41 @@ public class AuthUserServiceImpl implements AuthUserService {
 
     @Override
     public void activateUser(String userCode, String password, String updateBy) {
-
+        logger.info("【激活用户信息】 Activating User {} by {}.", userCode, updateBy);
+        userCacheService.activateAndSetPassword(userCode, password, updateBy);
+        logger.info("【激活用户信息】 Activated User {} by {}.", userCode, updateBy);
     }
 
     @Override
     public void deActivateUser(String userCode, String updateBy) {
-
+        logger.info("【取消激活用户信息】 deActivating User {} by {}.", userCode, updateBy);
+        userCacheService.updateActiveStatus(userCode, false, updateBy);
+        logger.info("【取消激活用户信息】 deActivating User {} by {}.", userCode, updateBy);
     }
 
     @Override
     public void modifyMobilePhone(String userCode, String newMobilePhoneNo, String updateBy) {
-
+        logger.info("【更新用户电话号码】 modify User {} mobilePhone {}.", userCode, newMobilePhoneNo);
+        userCacheService.updateMobilePhoneNo(userCode, newMobilePhoneNo, updateBy);
+        logger.info("【更新用户电话号码】 modify User {} mobilePhone {} by user {} complete.",userCode, newMobilePhoneNo, updateBy);
     }
 
     @Override
     public void deleteUser(String userCode, String updateBy) {
+        logger.info("【删除用户信息】 delete User {} by {}.", userCode, updateBy);
+        userCacheService.deleteUser(userCode);
+        logger.info("【删除用户信息】 delete User {} by {} complete.", userCode, updateBy);
 
     }
 
     @Override
     public LoginUserInfo getUserInfoByUserCode(String userCode) {
-        return null;
+        return userCacheService.getUserInfoByUserCode(userCode);
     }
 
     @Override
     public LoginUserInfo getUserInfoByMobilePhone(String mobilePhoneNo) {
-        return null;
+        return userCacheService.getUserInfoByMobilePhoneNo(mobilePhoneNo);
     }
 
     @Override

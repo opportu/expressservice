@@ -33,7 +33,6 @@ public class MybatisConfiguration {
         druidDataSource.setUrl(dataSourceProperties.getUrl());
         druidDataSource.setUsername(dataSourceProperties.getUsername());
         druidDataSource.setPassword(dataSourceProperties.getPassword());
-        druidDataSource.setInitialSize(dataSourceProperties.getInitialSize());
         druidDataSource.setMinIdle(dataSourceProperties.getMinIdle());
         druidDataSource.setMaxActive(dataSourceProperties.getMaxActive());
         druidDataSource.setMaxWait(dataSourceProperties.getMaxWait());
